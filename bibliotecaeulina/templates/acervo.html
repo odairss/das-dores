@@ -1,0 +1,20 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Acervo {% endblock %}
+{% load static %}
+
+{%block conteudo %}
+
+<div class="row">
+    <div class="col-md-12">
+      <p>ACERVO</p>
+    </div>
+
+    {% for livro in acervo %}
+   <!-- <article class="col-md-6 livro"> -->
+        <div class="col-md-3 acervo">
+            <a href="{% url 'buscar_livro' livro.id %}" target="_self"> <img src="{{livro.capa.url}}"/></a>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

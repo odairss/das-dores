@@ -1,0 +1,14 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Catalogar Livro {% endblock %}
+{%block conteudo %}
+<p>Novo / Atualizar Leitor</p>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" >Cadastrar</button>
+</form>
+{% if leitor %}
+<a href="{% url 'delete_livro' livro.id %}" target="_self">delete</a><br/>
+{% endif %}
+<p><a href="{% url 'index' %}" target="_self">Return to home</a> </p>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Livro {% endblock %}
+{% load static %}
+{%block conteudo %}
+
+
+<article class="col-md-12 livro" xmlns="http://www.w3.org/1999/html">
+    <div class="col-md-3 livro-capa">
+        <img src="{{livro.capa.url}}" height="200" width="150"/> <br/>
+        <a href="{% url 'update_livro' livro.id %}">update</a> | <a href="{% url 'delete_livro' livro.id %}" target="_self">delete</a>
+    </div>
+    <div class="col-md-9 descricao-livro">
+        Título: <a href="{% url 'buscar_livro' livro.id %}" target="_self">{{livro.titulo}}</a><br/>
+        Autor: {{livro.autor}}<br/>
+        Páginas: {{livro.paginas}}<br/>
+        Editora: {{livro.editora}}</br>
+        Série: {{livro.serie }}<br/>
+        Tema: {{livro.tema }} <br/>
+        ISBN: {{livro.isbn}}<br/>
+        Ilustração: {{livro.ilustracao}}<br/>
+        Cadastrado em: {{ livro.upload_at }} <br/>
+        Disponíveis: {{livro.quantidade }}<br/>
+        Emprestável: {{livro.emprestavel }} <br/>
+        <strong>Sinópse: </strong> {{livro.sinopse}}<br/>
+
+    </div>
+</article>
+{% endblock %}

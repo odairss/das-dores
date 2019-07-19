@@ -1,0 +1,15 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Página Inicial {% endblock %}
+{%block conteudo %}
+<section>
+    <article class="col-md-12"><a href="{% url 'ver_acervo' %}">Acervo</a></article>
+    <article class="col-md-12"><a href="">Doar livro</a></article>
+    <article class="col-md-12"><a href="">Pegar Livro emprestado</a></article>
+    <article class="col-md-12"><a href="{% url 'new' %}" target="_self">Catalogar novo livro</a></article>
+    <article class="col-md-12"><a href="{% url 'list_users' %}" target="_self">Usuários</a> </article>
+    <article class="col-md-12"><a href="{% url 'cadastro_aluno' %}" target="_self">Cadastrar Aluno</a> </article>
+    <article class="col-md-12"><a href="{% url 'cadastro_leitor' %}" target="_self">Cadastrar Leitor</a> </article>
+    <article class="col-md-12"><a href="{% url 'cadastro_professor' %}" target="_self">Cadastrar Professor</a> </article>
+</section>
+
+{% endblock %}

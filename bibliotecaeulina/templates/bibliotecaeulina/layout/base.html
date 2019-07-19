@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>{% block title %} Biblioteca Escolar Maria das Dores Garcia dos Santos {% endblock%}</title>
+    <link href="{% static 'js/bootstrap-4.3.1-dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Dokdo|Pacifico" rel="stylesheet">
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'img/favicon.png' %}" height='45px'>
+    </a>
+    <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#conteudo-navbar"
+            aria-controls="conteudo-navbar" aria-expanded="false"
+            aria-label="Ativar navegação">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="conteudo-navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">
+                    Página Inicial
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'ver_acervo' %}">
+                    Acervo
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Login
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <header class="row">
+            <h2>Biblioteca Escolar</h2>
+            <h1>Professora Maria das Dores Garcia dos Santos</h1>
+        </header>
+        <main class="col-md-12">
+            {% block conteudo %} {% endblock %}
+
+            <script src="{% static 'js/jquery-3.3.1.min.js'%}" type="text/javascript"></script>
+            <script src="{% static 'js/bootstrap-4.3.1-dist/js/bootstrap.min.js' %}" type="text/javascript"></script>
+
+            {% block scripts %} {% endblock %}
+        </main>
+    </div>
+</div>
+</body>
+</html>

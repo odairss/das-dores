@@ -1,0 +1,11 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Deletar Livro {% endblock %}
+{%block conteudo %}
+<p>Deletar Livro</p>
+<form method="post">
+    {% csrf_token %}
+    <h3>Tem certeza que você quer remover o livro {{ livro.titulo }}</h3>
+    <button type="submit">Confirmar</button>
+</form>
+
+{% endblock %}

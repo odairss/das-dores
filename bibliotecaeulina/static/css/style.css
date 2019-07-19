@@ -1,0 +1,50 @@
+h2{
+    text-align: center;
+    font-family: 'Dokdo', cursive;
+}
+h1{
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 4.5em;
+    color: #39a;
+    text-shadow: 1px 3px 5px #235;
+}
+.livro{
+    position: relative;
+    z-index: 2;
+    float: left;
+    border: 1px solid green;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.descricao-livro{
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 65%;
+  /*  border: 1px solid red; */
+    font-size: 0.8em;
+    text-align: justify;
+}
+.livro-capa{
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 35%;
+   /* border: 1px solid blue; */
+}
+.livro-capa img{
+    width: 95%;
+    min-height: 300px;
+    box-shadow: 1px 3px 5px #55a;
+}
+.acervo{
+    position: relative;
+    float: left;
+   /* border: 1px solid blue; */
+}
+.acervo img{
+    width: 95%;
+    min-height: 300px;
+    box-shadow: 1px 3px 5px #55a;
+}
