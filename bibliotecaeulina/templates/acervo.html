@@ -4,15 +4,13 @@
 
 {%block conteudo %}
 
-<div class="row">
+<div class="row container-content">
     <div class="col-md-12">
       <p>ACERVO</p>
     </div>
-
     {% for livro in acervo %}
-   <!-- <article class="col-md-6 livro"> -->
-        <div class="col-md-3 acervo">
-            <a href="{% url 'buscar_livro' livro.id %}" target="_self"> <img src="{{livro.capa.url}}"/></a>
+        <div class="col-6 col-sm-3 col-md-2 col-lg-2 acervo">
+            <a href="{% url 'buscar_livro' livro.idlivro %}" target="_self"> <img src="{{livro.capa.url}}"/></a>
         </div>
     {% endfor %}
 </div>

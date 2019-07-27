@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="{% static 'js/vegas/vegas.min.css' %}" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Dokdo|Pacifico" rel="stylesheet">
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+</head>
+<body>
+<div class="container mt-4">
+  <div id="container-login">
+  <form action="{% url 'teste' %}" method="POST">
+      {% csrf_token %}
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" class="form-control" id="email" placeholder="username" name="usuario">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="senha">
+    </div>
+    {% for message in messages %}
+    <div class="alert alert-danger">
+        <strong>Error!</strong> {{message}}
+    </div>
+    {% endfor %}
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  </div>
+</div>
+<script src="{% static 'js/vegas/vegas.min.js' %}" type="text/javascript"></script>
+    {% block scripts %} {% endblock %}
+<script>
+    $("body").vegas({
+        slides:[
+            {src: "{% static 'img/slideshow/01.jpg' %}"},
+            {src: "{% static 'img/slideshow/02.jpg' %}"},
+            {src: "{% static 'img/slideshow/03.jpg' %}"},
+            {src: "{% static 'img/slideshow/04.jpg' %}"},
+            {src: "{% static 'img/slideshow/05.jpg' %}"},
+            {src: "{% static 'img/slideshow/06.jpg' %}"},
+            {src: "{% static 'img/slideshow/07.jpg' %}"},
+            {src: "{% static 'img/slideshow/08.jpg' %}"},
+            {src: "{% static 'img/slideshow/09.jpg' %}"}
+
+            ],
+            overlay:"{% static 'js/vegas/overlays/07.png' %}",
+            color: "#000000"
+    });
+</script>
+</body>
+</html>

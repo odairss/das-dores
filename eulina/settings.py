@@ -25,7 +25,7 @@ SECRET_KEY = '5jpb(0bwj7%9mnez3-#5jti@x@dnf4*!r_&8pnyn2&5v4u@^=c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dasdores.pythonanywhere.com']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bibliotecaeulina',
+    'reset_migrations',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/dasdores/das-dores/bibliotecaeulina/static'

@@ -1,0 +1,10 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} {% endblock %}
+{%block conteudo %}
+<div>
+    {%for usuario in usuarios %}
+<p>Usuário: {{usuario.username}}<br/>
+Senha: {{usuario.password}}<br/></p>
+{% endfor %}
+{% endblock %}
+</div>

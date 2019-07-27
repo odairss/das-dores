@@ -1,0 +1,17 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Empréstimos {% endblock %}
+{% load static %}
+{%block conteudo %}
+<div class="row container-content">
+    <div class="col">
+        <p>EMPRÉSTIMOS</p>
+    </div>
+    <div class="col-md-12">
+        {% for emprestimo in emprestimos %}
+        <p>Empréstimo: <a href="{% url 'buscar_emprestimo' emprestimo %}" target="_self">{{emprestimo}}</a></p>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

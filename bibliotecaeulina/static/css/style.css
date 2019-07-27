@@ -1,19 +1,49 @@
+header{
+    margin-top: 110px;
+    margin-bottom: 30px;
+}
 h2{
-    text-align: center;
     font-family: 'Dokdo', cursive;
+    font-size: 2.5em;
+    color: #FFFF00;
+    text-shadow: 1px 3px 3px #000;
+    min-width: 100%;
+    /*border: 1px solid red;*/
 }
 h1{
-    text-align: center;
     font-family: 'Pacifico', cursive;
     font-size: 4.5em;
-    color: #39a;
-    text-shadow: 1px 3px 5px #235;
+    color: #00BFFF;
+    text-shadow: 1px 3px 5px #000;
+}
+.home-menu{
+    text-align: center;
+    font-family: 'Dokdo', cursive;
+    font-size: 1.5em;
+    text-shadow: 1px 2px 2px #000;
+}
+.home-menu a{
+    color: #fff;
+}
+.container-content{
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 50px;
+}
+#container-login{
+    position: relative;
+    z-index: 3;
+    float: left;
+    top: 120px;
+    left: 33%;
+    width: 33%;
+    color: #fff;
 }
 .livro{
     position: relative;
     z-index: 2;
     float: left;
-    border: 1px solid green;
+    /* border: 1px solid green; */
     padding-bottom: 10px;
     padding-top: 10px;
 }
@@ -21,7 +51,7 @@ h1{
     position: relative;
     z-index: 2;
     float: left;
-    width: 65%;
+   /* width: 65%; */
   /*  border: 1px solid red; */
     font-size: 0.8em;
     text-align: justify;
@@ -30,12 +60,12 @@ h1{
     position: relative;
     z-index: 2;
     float: left;
-    width: 35%;
+   /* width: 35%; */
    /* border: 1px solid blue; */
 }
 .livro-capa img{
-    width: 95%;
-    min-height: 300px;
+    max-width: 95%;
+   /* min-height: 200px; */
     box-shadow: 1px 3px 5px #55a;
 }
 .acervo{
@@ -45,6 +75,8 @@ h1{
 }
 .acervo img{
     width: 95%;
-    min-height: 300px;
+    /* min-height: 200px; */
     box-shadow: 1px 3px 5px #55a;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }

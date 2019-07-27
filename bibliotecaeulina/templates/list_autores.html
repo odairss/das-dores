@@ -1,0 +1,17 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Autores {% endblock %}
+{% load static %}
+{%block conteudo %}
+<div class="row container-content">
+    <div class="col">
+        <p>AUTORES</p>
+    </div>
+    <div class="col-md-12">
+        {% for autor in autores %}
+        <p>Nome: <a href="{% url 'buscar_autor' autor.idautor %}" target="_self">{{autor}}</a> Id Autor: {{autor.idautor}}</p>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
