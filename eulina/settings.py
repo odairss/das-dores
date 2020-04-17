@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bibliotecaeulina',
     'reset_migrations',
+    'crispy_forms',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,8 +81,13 @@ WSGI_APPLICATION = 'eulina.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'eulina.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'dasdores.mysql.pythonanywhere-services.com',
+        'USER': 'dasdores',
+        'NAME': 'eulina',
+        'PASSWORD': 'RdIgL31/1721',
+        'PORT': '3306',
+#        'NAME': os.path.join(BASE_DIR, 'eulina.sqlite3'),
     }
 }
 

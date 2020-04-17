@@ -1,0 +1,22 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} {{exemplar}} {% endblock %}
+{%block conteudo %}
+
+<div class="row container-content">
+    <article class="col-md-12 livro" xmlns="http://www.w3.org/1999/html">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            Livro: <a href="{% url 'buscar_livro' exemplar.idlivro.idlivro %}" target="_self">{{ exemplar.idlivro.titulo }}</a><br/>
+            Exemplar: <a href="{% url 'buscar_exemplar' exemplar.idexemplar %}" target="_self">{{exemplar}}</a><br/>
+            Situação: {{exemplar.situacao}}<br/>
+            Status:
+            {% if exemplar.status %}
+            <span id="status-exemplar-on">Disponível</span><br/>
+            {% else %}
+            <span id="status-exemplar-off">Indisponível</span><br/>
+            {% endif %}
+            <a href="{% url 'update_exemplar' exemplar.idexemplar %}">update</a> | <a href="{% url 'delete_exemplar' exemplar.idexemplar %}" target="_self">delete</a> |
+            {% if exemplar.status %}<a href="{% url 'emprestar_exemplar' exemplar.idexemplar %}" target="_self">Emprestar</a>{% endif %}
+        </div>
+    </article>
+</div>
+{% endblock %}

@@ -56,6 +56,12 @@ h1{
     font-size: 0.8em;
     text-align: justify;
 }
+.titulo-livro{
+    font-family: 'Dokdo', cursive;
+    font-size: 2em;
+    text-align: center;
+}
+
 .livro-capa{
     position: relative;
     z-index: 2;
@@ -79,4 +85,12 @@ h1{
     box-shadow: 1px 3px 5px #55a;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+#status-exemplar-on{
+    font-size: 1.5em;
+    color: #00FF08;
+}
+#status-exemplar-off{
+    font-size: 1.5em;
+    color: #ff0000;
 }

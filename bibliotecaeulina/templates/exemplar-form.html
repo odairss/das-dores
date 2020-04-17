@@ -1,10 +1,10 @@
 {% extends "bibliotecaeulina/layout/base.html"%}
 {% load crispy_forms_tags %}
-{% block title %} Cadastrar Cliente {% endblock %}
+{% block title %} Cadastrar Exemplar {% endblock %}
 {%block conteudo %}
 <div class="row container-content">
     <div class="col-12">
-        <p>Novo / Atualizar Autor</p>
+        <p>Novo / Atualizar Exemplar</p>
     </div>
     <div class="col-12">
         <form method="POST" enctype="multipart/form-data">
@@ -14,8 +14,8 @@
         </form>
     </div>
     <div class="col-12">
-        {% if cliente %}
-        <p><a href="{% url 'delete_cliente' cliente.idcliente %}" target="_self">delete</a></p>
+        {% if exemplar %}
+        <p><a href="{% url 'delete_exemplar' exemplar.idexemplar %}" target="_self">delete</a></p>
         {% endif %}
         <p><a href="{% url 'index' %}" target="_self">Return to home</a> </p>
     </div>

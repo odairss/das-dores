@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load crispy_forms_tags %}
 <head>
   <title>Login</title>
   <meta charset="utf-8">
@@ -18,26 +19,34 @@
 <body>
 <div class="container mt-4">
   <div id="container-login">
-  <form action="{% url 'submit' %}" method="POST">
+
+  <form action="{% url 'login' %}" method="POST">
       {% csrf_token %}
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="text" class="form-control" id="email" placeholder="username" name="username">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-    </div>
-    {% for message in messages %}
-    <div class="alert alert-danger">
-        <strong>Error!</strong> {{message}}
-    </div>
-    {% endfor %}
-    <div class="form-group form-check">
-      <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" name="remember"> Remember me
-      </label>
-    </div>
+      {{ form.non_field_errors }}
+    {% if form.username.errors %}
+    <ol>
+        {% for error in form.username.errors %}
+          <li>
+              <div class="alert alert-danger">
+                <strong>Error!</strong> {{error|escape}}
+              </div>
+          </li>
+        {% endfor %}
+    </ol>
+   {% endif %}
+
+    {% if form.password.errors %}
+    <ol>
+        {% for error in form.passoword.errors %}
+          <li>
+              <div class="alert alert-danger">
+                <strong>Error!</strong> {{error|escape}}
+              </div>
+          </li>
+        {% endfor %}
+    </ol>
+   {% endif %}
+      {{ form|crispy }}
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   </div>
