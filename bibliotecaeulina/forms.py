@@ -21,3 +21,7 @@ class LeitorForms(forms.ModelForm):
     class Meta:
         model = Leitor
         fields = ['nome','datanascimento','endereco','email','senha','celular','alunos']
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Nome de usuário',max_lenght=20)
+    senha = forms.CharField(label='Senha',widget=forms.PasswordInputin
