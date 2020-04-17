@@ -1,0 +1,30 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Empréstimo {{emprestimo}} {% endblock %}
+{%block conteudo %}
+
+<div class="row container-content">
+    <article class="col-md-12 livro" xmlns="http://www.w3.org/1999/html">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            Exemplar:<br/>
+            <a href="{% url 'buscar_exemplar' emprestimo.idexemplar.idexemplar %}" target="_self">{{emprestimo}}</a><br/>
+            Emprestado a <a href="{% url 'buscar_cliente' emprestimo.idcliente.idcliente %}" target="_self">{{emprestimo.idcliente}}</a><br/>
+            Por: {{emprestimo.idusuario}}<br/>
+            No dia {{emprestimo.dataemprestimo}}<br/>
+            Com previsão para ser devolvido até {{emprestimo.datadevolucao}}<br/>
+            Devolvido:
+            {% if emprestimo.devolucao %}
+               Sim<br/>
+            {% else %}
+                Não<br/>
+            {% endif %}
+            Dias atrasados: {{emprestimo.diasatrasados}}<br/>
+            <a href="{% url 'update_emprestimo' emprestimo.idemprestimo %}">update</a>
+            | <a href="{% url 'delete_emprestimo' emprestimo.idemprestimo %}" target="_self">delete</a>
+            {% if not emprestimo.devolucao %}
+            | <a href="{% url 'devolver' emprestimo.idemprestimo %}" target="_self">Confirmar devolução</a>
+            {% endif %}
+
+        </div>
+    </article>
+</div>
+{% endblock %}

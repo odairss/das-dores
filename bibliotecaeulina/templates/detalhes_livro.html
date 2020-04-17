@@ -1,0 +1,40 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} {{livro}} {% endblock %}
+{%block conteudo %}
+
+<div class="row container-content">
+    <article class="col-md-12 livro" xmlns="http://www.w3.org/1999/html">
+        <div class="col-12 col-sm-12 col-md-12"><p class="titulo-livro">{{ livro.titulo}}</p></div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 livro-capa">
+            <img src="{{livro.capa.url}}" height="200" width="150"/> <br/>
+            <a href="{% url 'update_livro' livro.idlivro %}">update</a> | <a href="{% url 'delete_livro' livro.idlivro %}" target="_self">delete</a> | <a href="#" target="_self">Detalhes</a><br/>
+            {% for example in livro.exemplar_set.all %}
+                <p>{{example}}
+                {% if example.status %}
+                    <span id="status-exemplar-on"><a href="{% url 'buscar_exemplar' example.idexemplar %}" target="_self">Disponível</a></span>
+                {% else %}
+                    <span id="status-exemplar-off">Indisponível</span>
+                {% endif %}
+                </p>
+            {% endfor %}
+           Total: {{livro.exemplar_set.all.count}}<br/>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 descricao-livro">
+            Título: {{livro}}<br/>
+            {% for autor in livro.idautor.all %}
+            Autor: {{autor}}<br/>
+            {% endfor %}
+            Cadastrado em: {{livro.uploaded_at}}<br/>
+            Ilustração: {{livro.ilustracao}}<br/>
+            Número de pág.: {{livro.paginas}}<br/>
+            Editora: {{livro.editora}}<br/>
+            ISBN: {{livro.isbn}}<br/>
+            Série: {{livro.serie}}<br/>
+            Tema: {{livro.tema}}<br/>
+            Faixa etária: {{livro.faixaetaria}}<br/>
+            <strong>Sinópse:</strong><br/>{{livro.sinopse}}<br/>
+
+        </div>
+    </article>
+</div>
+{% endblock %}

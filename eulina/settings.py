@@ -25,7 +25,7 @@ SECRET_KEY = '5jpb(0bwj7%9mnez3-#5jti@x@dnf4*!r_&8pnyn2&5v4u@^=c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dasdores.pythonanywhere.com']
 
 
 # Application definition
@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bibliotecaeulina',
+    'reset_migrations',
+    'crispy_forms',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,8 +81,13 @@ WSGI_APPLICATION = 'eulina.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'eulina.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'dasdores.mysql.pythonanywhere-services.com',
+        'USER': 'dasdores',
+        'NAME': 'eulina',
+        'PASSWORD': 'RdIgL31/1721',
+        'PORT': '3306',
+#        'NAME': os.path.join(BASE_DIR, 'eulina.sqlite3'),
     }
 }
 
@@ -121,3 +129,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/dasdores/das-dores/bibliotecaeulina/static'

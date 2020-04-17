@@ -1,0 +1,29 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} {{cliente.nome}} {% endblock %}
+{%block conteudo %}
+
+<div class="row container-content">
+    <article class="col-md-12 livro" xmlns="http://www.w3.org/1999/html">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            Nome: <a href="{% url 'buscar_cliente' cliente.idcliente %}" target="_self">{{cliente}}</a><br/>
+            <a href="{% url 'update_cliente' cliente.idcliente %}" target="_self">update</a>
+            | <a href="{% url 'delete_cliente' cliente.idcliente %}" target="_self">delete</a>
+            | <a href="{% url 'historico' cliente.idcliente %}" target="_self">histórico</a><br/>
+            Livros emprestados: {{cliente.livrosemprestados}}<br/>
+            Multa: {{cliente.multa}}<br/>
+            Data de Nascimento: {{cliente.datanascimento}}<br/>
+            Perfil: {{cliente.perfil}}<br/>
+            Usuário: {{cliente.user}}<br/>
+            Turno: {{cliente.turno}}<br/>
+            Ano: {{cliente.ano}}<br/>
+            Turma: {{cliente.turma}}<br/>
+            Responsável: {{cliente.responsavel}}<br/>
+            Endereço: {{cliente.endereco}}<br/>
+            Contato: {{cliente.celular}}<br/>
+            E-mail: {{cliente.email}}<br/>
+
+
+        </div>
+    </article>
+</div>
+{% endblock %}

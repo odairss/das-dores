@@ -1,0 +1,16 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Deletar {{usuario}} {% endblock %}
+{%block conteudo %}
+<div class="row container-content">
+    <div class="col-12">
+        <p>Deletar Usuário</p>
+    </div>
+    <div class="col">
+        <form method="post">
+            {% csrf_token %}
+            <h3>Tem certeza que você quer remover o usuário {{ usuario }}?</h3>
+            <p></p><button type="submit">Confirmar</button></p>
+        </form>
+    </div>
+</div>
+{% endblock %}

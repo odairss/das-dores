@@ -1,0 +1,32 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% load crispy_forms_tags %}
+{% block title %} Cadastrar Empréstimo {% endblock %}
+    {% block scripts-js %}  {% endblock %}
+{%block conteudo %}
+<div class="row container-content">
+    <div class="col-12">
+        <p>Emprestar exemplar</p>
+    </div>
+    <div class="col-12">
+        <form action="{% url 'cadastro_emprestimo' %}" method="POST">
+             {% csrf_token %}
+            <input type="hidden" value="{{exemplar.idexemplar}}" name="idexemplar" required="True"/>
+            <label for="label_idexemplar">Exemplar: </label>
+            <input type="text" value="{{exemplar}}" name="exemplar" disabled="True"/>
+            <label for="label_idcliente">Cliente: </label>
+            {% if clientes %}
+            <select name="idcliente" required="True">
+                <option value="">-----------------</option>
+                {% for client in clientes %}
+                  <option value="{{client.idcliente}}">{{client}}</option>
+               {% endfor %}
+            </select>
+            {% endif %}
+            <label for="label_datadevolucao">Data da Devolução: </label>
+            <input type='text' name="datadevolucao" value='{{datadevolver}}'  required="True"/>
+            <input type="hidden" value="1" name="idusuario" required="True"/>
+            <button type="submit" >Emprestar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

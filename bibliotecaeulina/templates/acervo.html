@@ -1,20 +1,33 @@
 {% extends "bibliotecaeulina/layout/base.html"%}
+{% load crispy_forms_tags %}
 {% block title %} Acervo {% endblock %}
 {% load static %}
 
 {%block conteudo %}
 
-<div class="row">
+<div class="row container-content">
     <div class="col-md-12">
       <p>ACERVO</p>
     </div>
-
-    {% for livro in acervo %}
-   <!-- <article class="col-md-6 livro"> -->
-        <div class="col-md-3 acervo">
-            <a href="{% url 'buscar_livro' livro.id %}" target="_self"> <img src="{{livro.capa.url}}"/></a>
-        </div>
-    {% endfor %}
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        {% if form %}
+        <form action='acervo' method='POST'>
+            {% csrf_token %}
+            {{form|crispy}}
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+        {% endif %}
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        {% if acervo %}
+            {% for livro in acervo %}
+                <div class="col-6 col-sm-3 col-md-2 col-lg-2 acervo" style="border: 1px solid red">
+                    <p class="titulo-livro">{{ livro.titulo}}</p>
+                    <a href="{% url 'buscar_livro' livro.idlivro %}" target="_self"> <img src="{{livro.capa.url}}"/></a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}

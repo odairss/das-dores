@@ -1,0 +1,19 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} {{autor}} {% endblock %}
+{%block conteudo %}
+
+<div class="row container-content">
+    <article class="col-md-12 livro" xmlns="http://www.w3.org/1999/html">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            Autor:<br/><a href="{% url 'buscar_autor' autor.idautor %}" target="_self">{{autor}}</a><br/>
+            <a href="{% url 'update_autor' autor.idautor %}">update</a> | <a href="{% url 'delete_autor' autor.idautor %}" target="_self">delete</a><br/>
+            Biografia: {{autor.biografia}}<br/>
+            <strong>Livros:</strong><br/>
+            {% for book in autor.livro_set.all%}
+            <a href="{% url 'buscar_livro' book.idlivro %}" target="">{{book}}</a><br/>
+            {% endfor %}
+
+        </div>
+    </article>
+</div>
+{% endblock %}

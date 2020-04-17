@@ -1,0 +1,30 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} {{cliente.nome}} {% endblock %}
+{%block conteudo %}
+
+<div class="row container-content">
+    <article class="col-md-12 livro" xmlns="http://www.w3.org/1999/html">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            Nome: <a href="{% url 'buscar_cliente' cliente.idcliente %}" target="_self">{{cliente}}</a><br/>
+            <strong>Histórico:</strong><br/>
+            {% for emprest in emprestimos %}
+                {{ emprest.idexemplar }}<br/>
+                Data do empréstimo: {{emprest.dataemprestimo}}<br/>
+                 Data prevista para devolver: {{emprest.datadevolucao}}<br/>
+                ({% if emprest.devolucao %}
+                    Devolvido
+                {% else %}
+                    Não devolveu ainda
+                {% endif %})<br/>
+                {% if emprest.datadevolvido is not null %}
+                Data da devolução: {{emprest.datadevolvido}}<br/>
+                {% endif %}
+                Dias atrasados: {{emprest.diasatrasados}}<br/>
+                <hr>
+            {% endfor %}
+
+
+        </div>
+    </article>
+</div>
+{% endblock %}

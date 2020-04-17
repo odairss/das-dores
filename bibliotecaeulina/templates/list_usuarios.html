@@ -1,0 +1,17 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Usuários {% endblock %}
+{% load static %}
+{%block conteudo %}
+<div class="row container-content">
+    <div class="col">
+        <p>USUÁRIOS</p>
+    </div>
+    <div class="col-md-12">
+        {% for usuario in usuarios %}
+        <p><a href="{% url 'buscar_usuario' usuario.idusuario %}" target="_self">{{usuario}}</a></p>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
