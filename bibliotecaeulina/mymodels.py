@@ -5,7 +5,8 @@ from django.db import models
 # Create your models here.
 
 class Cliente(models.Model):
-    idcliente = models.IntegerField('Id Cliente',primary_key=True,auto_created=True)
+    idcliente = models.AutoField(primary_key=True, verbose_name='Código')
+#    idcliente = models.IntegerField('Id Cliente',primary_key=True,auto_created=True)
     nome = models.CharField('Nome', max_length=200)
     datanascimento = models.DateField('Data de Nascimento',null=True, blank=True)
     endereco = models.TextField('Endereço', max_length=500,null=True, blank=True)
@@ -24,18 +25,24 @@ class Cliente(models.Model):
     senha = models.CharField('Senha', max_length=15)
     multa = models.IntegerField(default=0)
     livrosemprestados = models.IntegerField('Livros Emprestados',default=0,blank=True)
+
     def __str__(self):
         return self.nome
 
+
 class Autor(models.Model):
     nomeautor = models.CharField('Nome', max_length=100)
-    idautor = models.IntegerField('Id Autor',auto_created=True, primary_key=True)
+    idautor = models.AutoField(primary_key=True, verbose_name='Código')
+#    idautor = models.IntegerField('Id Autor',auto_created=True, primary_key=True)
     biografia = models.TextField('Biografia', blank=True)
+
     def __str__(self):
         return self.nomeautor
 
+
 class Livro(models.Model):
-    idlivro = models.IntegerField('Id Livro', auto_created=True, primary_key=True)
+    idlivro = models.AutoField(primary_key=True, verbose_name='Código')
+#    idlivro = models.IntegerField('Id Livro', auto_created=True, primary_key=True)
     titulo = models.CharField('Título',max_length=200)
     capa = models.ImageField(upload_to='img/',null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
@@ -48,21 +55,27 @@ class Livro(models.Model):
     idautor = models.ManyToManyField(Autor)
     sinopse = models.TextField('Sinópse',null=True,blank=True)
     ilustracao = models.CharField('Ilustração', max_length=200,null=True,blank=True)
+
     def __str__(self):
         return self.titulo
 
+
 class Exemplar(models.Model):
-    idexemplar = models.IntegerField('Exemplar',auto_created=True,primary_key=True)
+    idexemplar = models.AutoField(primary_key=True, verbose_name='Código')
+#    idexemplar = models.IntegerField('Exemplar',auto_created=True,primary_key=True)
     idlivro = models.ForeignKey(Livro, on_delete=models.CASCADE)
     SITUATION = ((u'Excelente',u'Excelente'),(u'Ótimo',u'Ótimo'),(u'Bom',u'Bom'),(u'Ruim',u'Ruim'),(u'Péssimo',u'Péssimo'))
     situacao = models.CharField('Situação',max_length=20,choices=SITUATION)
     DISPONIVEL = ((True,u'Disponível'),(False,u'Indisponível'))
     status = models.BooleanField('Disponível para Empréstimo', max_length=15, choices=DISPONIVEL)
+
     def __str__(self):
         return "%s - %s"%(self.idlivro, self.idexemplar)
 
+
 class Usuario(models.Model):
-    idusuario = models.IntegerField('Id Usuário',primary_key=True,auto_created=True)
+    idusuario = models.AutoField(primary_key=True, verbose_name='Código')
+#    idusuario = models.IntegerField('Id Usuário',primary_key=True,auto_created=True)
     nomeusuario = models.CharField('Nome', max_length=200)
     datanascimento = models.DateField('Data de Nascimento',null=True,blank=True)
     endereco = models.CharField('Endereço', max_length=500,null=True,blank=True)
@@ -72,11 +85,14 @@ class Usuario(models.Model):
     perfil = models.CharField('Perfil',max_length=15, choices=TIPO)
     username = models.CharField('Nome de Usuário', max_length=20)
     password = models.CharField('Senha', max_length=15)
+
     def __str__(self):
         return self.nomeusuario
 
+
 class Emprestimo(models.Model):
-    idemprestimo = models.IntegerField('Id Empréstimo',auto_created=True, primary_key=True)
+    idemprestimo = models.AutoField(primary_key=True, verbose_name='Código')
+#    idemprestimo = models.IntegerField('Id Empréstimo',auto_created=True, primary_key=True)
     idexemplar = models.ForeignKey(Exemplar, on_delete=models.CASCADE)
     idcliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     dataemprestimo = models.DateTimeField(auto_now_add=True)
@@ -85,6 +101,7 @@ class Emprestimo(models.Model):
     diasatrasados = models.IntegerField(default=0)
     devolucao = models.BooleanField('Confirmar devolução', default=False)
     idusuario = models.ForeignKey(Usuario, on_delete=models.PROTECT)
+
     def __str__(self):
         return "%s"%(self.idexemplar)
 
