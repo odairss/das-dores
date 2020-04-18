@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'dasdores.mysql.pythonanywhere-services.com',
         'USER': 'dasdores',
-        'NAME': 'eulina',
+        'NAME': 'dasdores$eulina',
         'PASSWORD': 'RdIgL31/1721',
         'PORT': '3306',
 #        'NAME': os.path.join(BASE_DIR, 'eulina.sqlite3'),
