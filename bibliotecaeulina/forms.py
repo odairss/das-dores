@@ -1,29 +1,35 @@
 from django import forms
 from .mymodels import Livro, Exemplar, Autor,Cliente, Usuario, Emprestimo
 
+
 class DateInput(forms.DateInput):
     input_type = 'date'
+
 
 class DateTimeInput(forms.DateTimeInput):
     input_type = 'datetime-local'
     format_key ='%m/%d/%y %H:%M:%S'
 
+
 class LivroForms(forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ['idlivro','titulo','paginas','capa','sinopse','editora',
+        fields = ['titulo','paginas','capa','sinopse','editora',
                   'isbn','serie','tema','faixaetaria','ilustracao','idautor']
+
 
 class ExemplarForms(forms.ModelForm):
     class Meta:
         model = Exemplar
         fields = ['idlivro','situacao','status']
 
+
 class UsuarioForms(forms.ModelForm):
     class Meta:
         model = Usuario
         fields = ['nomeusuario','datanascimento','endereco','email','celular','perfil','username','password']
         widgets = {'datanascimento':DateInput(attrs={'format':'99/99/9999'})}
+
 
 class ClienteForms(forms.ModelForm):
     class Meta:
@@ -37,11 +43,13 @@ class ClienteForms(forms.ModelForm):
         livrosemprestadoswidget.input_type = 'number'
         widgets = {'datanascimento':datawidget, 'multa':multawidget,'livrosemprestados':livrosemprestadoswidget}
 
+
 class AutorForms(forms.ModelForm):
     class Meta:
         model = Autor
         fields = ['nomeautor','biografia']
         labels = {'nomeautor':'Autor', 'biografia': 'Biografia'}
+
 
 class EmprestimoForms(forms.ModelForm):
     class Meta:
@@ -52,15 +60,6 @@ class EmprestimoForms(forms.ModelForm):
         date_widget.input_type = 'date'
         widgets = {'datadevolucao':date_widget}
 
-class LoginForm(forms.Form):
-    username = forms.CharField(label='Nome de usuário', max_length=20)
-    password = forms.CharField(label='Senha', max_length=20, widget=forms.PasswordInput)
-    def clean(self):
-        cleaned_data = super(LoginForm, self).clean()
-        username = cleaned_data.get('username')
-        password = cleaned_data.get('password')
-        if not username and not password:
-            raise forms.ValidationError('Your have to write something!')
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Nome de usuário', max_length=20)
@@ -71,6 +70,18 @@ class LoginForm(forms.Form):
         password = cleaned_data.get('password')
         if not username and not password:
             raise forms.ValidationError('Your have to write something!')
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Nome de usuário', max_length=20)
+    password = forms.CharField(label='Senha', max_length=20, widget=forms.PasswordInput)
+    def clean(self):
+        cleaned_data = super(LoginForm, self).clean()
+        username = cleaned_data.get('username')
+        password = cleaned_data.get('password')
+        if not username and not password:
+            raise forms.ValidationError('Your have to write something!')
+
 
 class SearchBookForm(forms.Form):
     book = forms.CharField(label='Título do Livro', max_length=200)
@@ -79,6 +90,7 @@ class SearchBookForm(forms.Form):
         book = cleaned_data.get('book')
         if not book:
             raise forms.ValidationError('You have to write something!')
+
 
 class EmprestimoForm(forms.Form):
     idexemplar = forms.CharField(label='Exemplar',widget=forms.NumberInput)
