@@ -20,46 +20,49 @@
     {% block scripts-js %} {% endblock %}
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="{% url 'index' %}">
-        <img src="{% static 'img/favicon.png' %}" height='45px'>
-    </a>
-    <button class="navbar-toggler" type="button"
-            data-toggle="collapse" data-target="#conteudo-navbar"
-            aria-controls="conteudo-navbar" aria-expanded="false"
-            aria-label="Ativar navegação">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="conteudo-navbar">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'index' %}">
-                    Página Inicial
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'ver_acervo' %}">
-                    Acervo
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    Login
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout'%}">
-                    Sair
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
 <div class="container">
     <div class="row">
         <header class="row header text-center">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <img src="{% static 'img/favicon.png' %}" height='45px'>
+                </a>
+                <button class="navbar-toggler" type="button"
+                        data-toggle="collapse" data-target="#conteudo-navbar"
+                        aria-controls="conteudo-navbar" aria-expanded="false"
+                        aria-label="Ativar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="conteudo-navbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'index' %}">
+                                Página Inicial
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ver_acervo' %}">
+                                Acervo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout'%}">
+                                Sair
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="navbar-text">
+                    Escola Municipal Professora Eulina Augusta de Almeida
+                </span>
+            </nav>
             <h2>Biblioteca Escolar</h2>
             <h1>Maria das Dores Garcia dos Santos</h1>
         </header>
