@@ -1,0 +1,17 @@
+{% extends "bibliotecaeulina/layout/base.html"%}
+{% block title %} Cole@ccedil;@oatilde;es {% endblock %}
+{% load static %}
+{%block conteudo %}
+<div class="row container-content">
+    <div class="col">
+        <p>Cole@ccedil;@oatilde;es</p>
+    </div>
+    <div class="col-md-12">
+        {% for colecao in colecoes %}
+        <p><a href="{% url 'buscar_colecao' colecao.idcolecao %}" target="_self">{{colecao}}</a></p>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

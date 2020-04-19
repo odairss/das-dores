@@ -18,6 +18,12 @@ urlpatterns = [
     path('cadastro_cliente', views.cadastro_cliente, name='cadastro_cliente'),
     path('cliente/<int:idcliente>/historico',views.historico,name='historico'),
 
+    path('cadastro_colecao', views.cadastro_colecao, name='cadastro_colecao'),
+    path('update_colecao/<int:idcolecao>/', views.update_colecao, name='update_colecao'),
+    path('delete_colecao/<int:idcolecao>/', views.delete_colecao, name='delete_colecao'),
+    path('colecoes', views.list_colecoes, name="list_colecoes"),
+    path('colecao/<int:idcolecao>/', views.colecao, name="buscar_colecao"),
+
     path('cadastro_livro', views.cadastro_livro, name='new'),
     path('update_livro/<int:idlivro>/', views.update_livro, name='update_livro'),
     path('delete_livro/<int:idlivro>/', views.delete_livro, name='delete_livro'),

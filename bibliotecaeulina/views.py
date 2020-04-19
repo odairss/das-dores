@@ -5,8 +5,8 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 #from django.contrib import messages #posso até excluir essa importação porque django form já vem com atributos de mensagens de erro.
 from django.core.files.storage import FileSystemStorage
-from .mymodels import Livro, Autor,Cliente, Usuario, Emprestimo, Exemplar
-from .forms import LivroForms, ExemplarForms, AutorForms, ClienteForms, UsuarioForms, EmprestimoForms, LoginForm,\
+from .mymodels import Colecao, Livro, Autor,Cliente, Usuario, Emprestimo, Exemplar
+from .forms import ColecaoForms, LivroForms, ExemplarForms, AutorForms, ClienteForms, UsuarioForms, EmprestimoForms, LoginForm,\
 SearchBookForm
 from datetime import datetime, timedelta, timezone
 
@@ -78,6 +78,51 @@ def delete_usuario(request,idusuario):
 def usuario(request,idusuario):
     usuario = Usuario.objects.get(idusuario=idusuario)
     return render(request,'usuario.html',{'usuario': usuario})
+
+
+#######COLEÇÕES#########
+
+@login_required(login_url='login')
+def cadastro_colecao(request):
+    form = ColecaoForms(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('list_colecoes')
+    else:
+        form = ColecaoForms()
+    return render(request, 'colecao-form.html', {'form': form})
+
+
+@login_required(login_url='login')
+def list_colecoes(request):
+    colecoes = Colecao.objects.all()
+    return render(request, 'colecoes.html', {'colecoes': colecoes})
+
+
+@login_required(login_url='login')
+def colecao(request,idcolecao):
+    colecao = Colecao.objects.get(idcolecao=idcolecao)
+    return render(request, 'colecao.html', {'colecao': colecao})
+
+
+@login_required(login_url='login')
+def update_colecao(request,idcolecao):
+    colecao = Colecao.objects.get(idcolecao=idcolecao)
+    form = ColecaoForms(request.POST or None, instance=colecao)
+    if form.is_valid():
+        form.save()
+        return redirect('ver_colecao')
+    return render(request, 'colecao-form.html', {'form': form, 'colecao': colecao})
+
+
+@login_required(login_url='login')
+def delete_colecao(request, idcolecao):
+    colecao = Colecao.objects.get(idcolecao=idcolecao)
+    if request.method == 'POST':
+        colecao.delete()
+        return redirect('ver_colecao')
+    return render(request, 'colecao-delete-confirm.html', {'colecao': colecao})
+
 
 #######LIVROS#########
 

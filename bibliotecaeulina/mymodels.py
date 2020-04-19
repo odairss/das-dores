@@ -40,10 +40,19 @@ class Autor(models.Model):
         return self.nomeautor
 
 
+class Colecao(models.Model):
+    idcolecao = models.AutoField(primary_key=True, verbose_name='Código')
+    nome = models.CharField('Nome da Coleção', max_length=300)
+
+    def __str__(self):
+        return self.nome
+
+
 class Livro(models.Model):
     idlivro = models.AutoField(primary_key=True, verbose_name='Código')
 #    idlivro = models.IntegerField('Id Livro', auto_created=True, primary_key=True)
     titulo = models.CharField('Título',max_length=200)
+    idcolecao = models.ForeignKey(Colecao, on_delete=models.CASCADE, null=True, blank=True)
     capa = models.ImageField(upload_to='img/',null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     paginas = models.DecimalField(max_digits=7,decimal_places=0,null=True,blank=True)

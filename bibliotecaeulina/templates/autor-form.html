@@ -7,7 +7,7 @@
         <p>Novo / Atualizar Autor</p>
     </div>
     <div class="col-12">
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST">
             {% csrf_token %}
             {{ form|crispy }}
             <button type="submit" >Cadastrar</button>

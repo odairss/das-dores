@@ -1,5 +1,5 @@
 from django import forms
-from .mymodels import Livro, Exemplar, Autor,Cliente, Usuario, Emprestimo
+from .mymodels import Livro, Exemplar, Autor,Cliente, Usuario, Emprestimo, Colecao
 
 
 class DateInput(forms.DateInput):
@@ -11,11 +11,17 @@ class DateTimeInput(forms.DateTimeInput):
     format_key ='%m/%d/%y %H:%M:%S'
 
 
+class ColecaoForms(forms.ModelForm):
+    class Meta:
+        model = Colecao
+        fields = ['nome']
+
+
 class LivroForms(forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ['titulo','paginas','capa','sinopse','editora',
-                  'isbn','serie','tema','faixaetaria','ilustracao','idautor']
+        fields = ['titulo', 'idcolecao', 'paginas', 'capa', 'sinopse', 'editora',
+                  'isbn', 'serie', 'tema', 'faixaetaria', 'ilustracao', 'idautor']
 
 
 class ExemplarForms(forms.ModelForm):
