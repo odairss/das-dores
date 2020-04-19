@@ -133,7 +133,7 @@ def cadastro_livro(request):
         form.save()
         livro = Livro.objects.last()
         exemplo = Exemplar()
-        exemplo.idlivro = livro.idlivro
+        exemplo.idlivro = livro
         exemplo.status = False
         exemplo.situacao = livro.situacao
         exemplo.save()
