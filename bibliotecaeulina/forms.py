@@ -20,8 +20,8 @@ class ColecaoForms(forms.ModelForm):
 class LivroForms(forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ['titulo', 'idcolecao', 'paginas', 'capa', 'sinopse', 'editora',
-                  'isbn', 'serie', 'tema', 'faixaetaria', 'ilustracao', 'idautor']
+        fields = ['titulo', 'idautor', 'idcolecao', 'paginas', 'capa', 'sinopse', 'editora',
+                  'isbn', 'serie', 'tema', 'faixaetaria', 'ilustracao', 'situacao']
 
 
 class ExemplarForms(forms.ModelForm):

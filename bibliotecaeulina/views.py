@@ -131,10 +131,17 @@ def cadastro_livro(request):
     form = LivroForms(request.POST, request.FILES)
     if form.is_valid():
         form.save()
+        livro = Livro.objects.last()
+        exemplo = Exemplar()
+        exemplo.idlivro = livro.idlivro
+        exemplo.status = False
+        exemplo.situacao = livro.situacao
+        exemplo.save()
         return redirect('ver_acervo')
     else:
         form = LivroForms()
     return render(request,'livro-form.html',{'form': form})
+
 
 @login_required(login_url='login')
 def acervo(request):

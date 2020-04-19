@@ -52,7 +52,7 @@ class Livro(models.Model):
     idlivro = models.AutoField(primary_key=True, verbose_name='Código')
 #    idlivro = models.IntegerField('Id Livro', auto_created=True, primary_key=True)
     titulo = models.CharField('Título',max_length=200)
-    idcolecao = models.ForeignKey(Colecao, on_delete=models.CASCADE, null=True, blank=True)
+    idcolecao = models.ForeignKey(Colecao, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Coleção')
     capa = models.ImageField(upload_to='img/',null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     paginas = models.DecimalField(max_digits=7,decimal_places=0,null=True,blank=True)
@@ -64,6 +64,8 @@ class Livro(models.Model):
     idautor = models.ManyToManyField(Autor)
     sinopse = models.TextField('Sinópse',null=True,blank=True)
     ilustracao = models.CharField('Ilustração', max_length=200,null=True,blank=True)
+    SITUATION = ((u'Excelente',u'Excelente'),(u'Ótimo',u'Ótimo'),(u'Bom',u'Bom'),(u'Ruim',u'Ruim'),(u'Péssimo',u'Péssimo'))
+    situacao = models.CharField('Situação',max_length=20,choices=SITUATION)
 
     def __str__(self):
         return self.titulo
