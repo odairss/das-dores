@@ -1,14 +1,14 @@
 {% extends "bibliotecaeulina/layout/base.html"%}
-{% block title %} Deletar Cole@ccedil;@aatilde;o {{colecao}} {% endblock %}
+{% block title %} Deletar Cole&ccedil;&atilde;o {{colecao}} {% endblock %}
 {%block conteudo %}
 <div class="row container-content">
     <div class="col-12">
-        <p>Deletar Cole@ccedil;@aatilde;o</p>
+        <p>Deletar Cole&ccedil;&atilde;o</p>
     </div>
     <div class="col">
         <form method="post">
             {% csrf_token %}
-            <h3>Tem certeza que você quer remover a cole@ccedil;@aatilde;o {{ colecao }}?</h3>
+            <h3>Tem certeza que você quer remover a cole&ccedil;&atilde;o {{ colecao }}?</h3>
             <p></p><button type="submit">Confirmar</button></p>
         </form>
     </div>
