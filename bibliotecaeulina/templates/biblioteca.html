@@ -2,22 +2,22 @@
 {% block title %} Biblioteca Escolar Maria Das Dores Garcia dos Santos {% endblock %}
 {%block conteudo %}
 <section>
-    <article class="col-md-12 home-menu"><a href="{% url 'cadastro_usuario' %}" target="_self">Cadastrar Usuário</a> </article>
-    <article class="col-md-12 home-menu"><a href="{% url 'cadastro_autor' %}" target="_self">Cadastrar Autor</a> </article>
-    <article class="col-md-12 home-menu"><a href="{% url 'cadastro_cliente' %}" target="_self">Cadastrar Cliente</a></article>
-    <article class="col-md-12 home-menu"><a href="{% url 'cadastro_colecao' %}" target="_self">Catalogar nova cole&ccedil;&atilde;o</a> </article>
-    <article class="col-md-12 home-menu"><a href="{% url 'new' %}" target="_self">Catalogar novo livro</a></article>
-    <article class="col-md-12 home-menu"><a href="{% url 'cadastro_exemplar' %}" target="_self">Catalogar novo Exemplar</a></article>
+    <article class="col-md-12 home-menu"><a href="{% url 'cadastro_usuario' %}" target="_self">Cadastrar Usuário</a><hr> </article>
+    <article class="col-md-12 home-menu"><a href="{% url 'cadastro_autor' %}" target="_self">Cadastrar Autor</a><hr> </article>
+    <article class="col-md-12 home-menu"><a href="{% url 'cadastro_cliente' %}" target="_self">Cadastrar Cliente</a><hr></article>
+    <article class="col-md-12 home-menu"><a href="{% url 'cadastro_colecao' %}" target="_self">Catalogar nova cole&ccedil;&atilde;o</a><hr> </article>
+    <article class="col-md-12 home-menu"><a href="{% url 'new' %}" target="_self">Catalogar novo livro</a><hr></article>
+    <article class="col-md-12 home-menu"><a href="{% url 'cadastro_exemplar' %}" target="_self">Catalogar novo Exemplar</a><hr></article>
 
-    <article class="col-md-12 home-menu"><a href="{% url 'list_colecoes' %}">Cole&ccedil;&atilde;o</a></article>
-    <article class="col-md-12 home-menu"><a href="{% url 'ver_acervo' %}">Acervo</a></article>
-    <article class="col-md-12 home-menu"><a href="{% url 'exemplares' %}" target="_self">Exemplares</a></article>
-    <article class="col-md-12 home-menu"><a href="{% url 'list_usuarios' %}" target="_self">Usuários</a> </article>
+    <article class="col-md-12 home-menu"><a href="{% url 'list_colecoes' %}">Cole&ccedil;&atilde;o</a><hr></article>
+    <article class="col-md-12 home-menu"><a href="{% url 'ver_acervo' %}">Acervo</a><hr></article>
+    <article class="col-md-12 home-menu"><a href="{% url 'exemplares' %}" target="_self">Exemplares</a><hr></article>
+    <article class="col-md-12 home-menu"><a href="{% url 'list_usuarios' %}" target="_self">Usuários</a><hr> </article>
 
-    <article class="col-md-12 home-menu"><a href="{% url 'list_autores' %}" target="_self">Autores</a></article>
+    <article class="col-md-12 home-menu"><a href="{% url 'list_autores' %}" target="_self">Autores</a><hr></article>
 
-    <article class="col-md-12 home-menu"><a href="{% url 'list_clientes' %}" target="_self">Clientes</a></article>
-  <!--  <article class="col-md-12 home-menu"><a href="{% url 'cadastro_emprestimo' %}" target="_self">Cadastrar Empréstimo</a></article> -->
-    <article class="col-md-12 home-menu"><a href="{% url 'list_emprestimos' %}" target="_self">Empréstimos</a></article>
+    <article class="col-md-12 home-menu"><a href="{% url 'list_clientes' %}" target="_self">Clientes</a><hr></article>
+  <!--  <article class="col-md-12 home-menu"><a href="{% url 'cadastro_emprestimo' %}" target="_self">Cadastrar Empréstimo</a><hr></article> -->
+    <article class="col-md-12 home-menu"><a href="{% url 'list_emprestimos' %}" target="_self">Empréstimos</a><hr></article>
 </section>
 {% endblock %}

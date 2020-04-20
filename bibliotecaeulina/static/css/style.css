@@ -1,29 +1,45 @@
+body{
+    background-color: #FFFACD;
+}
 header{
     margin-top: 110px;
     margin-bottom: 30px;
+    text-align: center;
+}
+.header-custom{
+    margin: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 h2{
     font-family: 'Dokdo', cursive;
-    font-size: 2.5em;
+    font-size: 2em;
     color: #FFFF00;
     text-shadow: 1px 3px 3px #000;
     min-width: 100%;
-    /*border: 1px solid red;*/
+   /* border: 1px solid red; */
 }
 h1{
     font-family: 'Pacifico', cursive;
-    font-size: 4.5em;
+    font-size: 4em;
     color: #00BFFF;
     text-shadow: 1px 3px 5px #000;
+    min-width: 100%;
+   /* border: 1px solid green; */
+}
+hr{
+    margin-top: 0;
+    margin-bottom: 0;
 }
 .home-menu{
     text-align: center;
     font-family: 'Dokdo', cursive;
     font-size: 1.5em;
     text-shadow: 1px 2px 2px #000;
+   /* border: 1px solid red; */
 }
 .home-menu a{
-    color: #fff;
+    color: #ADFF2F;
 }
 .container-content{
     background-color: #fff;
@@ -34,7 +50,7 @@ h1{
     position: relative;
     z-index: 3;
     float: left;
-    top: 120px;
+    padding-top: 30px;
     left: 33%;
     width: 33%;
     color: #fff;
@@ -93,4 +109,47 @@ h1{
 #status-exemplar-off{
     font-size: 1.5em;
     color: #ff0000;
+}
+footer{
+    width: 100%;
+    padding: 20px;
+    float: left;
+    background-color: #fff;
+    margin-top: 40px;
+    text-align: center;
+    position: relative;
+    left: 0;
+    bottom: 0;
+}
+footer p{
+    font-size: 0.8em;
+    color: #696969;
+}
+
+.footer-custom{
+    width: 100%;
+    padding: 20px;
+    float: left;
+    background-color: #fff;
+    margin-top: 40px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+@media only screen and (max-width: 600px) {
+    #container-login{
+        left: 5%;
+        width: 90%;
+    }
+
+    .footer-custom {
+        position: relative;
+    }
+    h2{
+        font-size: 1.5em;
+    }
+    h1{
+        font-size: 3em;
+    }
 }
