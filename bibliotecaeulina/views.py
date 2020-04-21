@@ -10,6 +10,7 @@ from .forms import ColecaoForms, LivroForms, ExemplarForms, AutorForms, ClienteF
 SearchBookForm
 from datetime import datetime, timedelta, timezone
 
+
 @csrf_protect
 def login_user(request):
     if request.method == 'POST':
@@ -51,11 +52,12 @@ def cadastro_usuario(request):
         form = UsuarioForms()
     return render(request,'usuario-form.html', {'form': form})
 
+
 @login_required(login_url='login')
 def list_usuarios(request):
     usuarios = Usuario.objects.order_by("nomeusuario")
-    print(usuarios.query)
     return render(request,'list_usuarios.html',{'usuarios':usuarios})
+
 
 @login_required(login_url='login')
 def update_usuario(request, idusuario):
@@ -66,6 +68,7 @@ def update_usuario(request, idusuario):
         return redirect('list_usuarios')
     return render(request, 'usuario-form.html',{'form':form,'usuario':usuario})
 
+
 @login_required(login_url='login')
 def delete_usuario(request,idusuario):
     usuario = Usuario.objects.get(idusuario=idusuario)
@@ -73,6 +76,7 @@ def delete_usuario(request,idusuario):
         usuario.delete()
         return redirect('list_usuarios')
     return render(request, 'usuario-delete-confirm.html',{'usuario':usuario})
+
 
 @login_required(login_url='login')
 def usuario(request,idusuario):
@@ -160,9 +164,11 @@ def livro(request,idlivro):
     livro = Livro.objects.get(idlivro=idlivro)
     return render(request,'livro.html',{'livro': livro})
 
+
 def detalhes_livro(request, idlivro):
     livro = Livro.objects.get(idlivro=idlivro)
     return render(request, 'detalhes_livro.html',{'livro':livro})
+
 
 @login_required(login_url='login')
 def update_livro(request,idlivro):
@@ -172,6 +178,7 @@ def update_livro(request,idlivro):
         form.save()
         return redirect('ver_acervo')
     return render(request,'livro-form.html',{'form': form,'livro': livro})
+
 
 @login_required(login_url='login')
 def delete_livro(request, idlivro):
@@ -193,15 +200,18 @@ def cadastro_exemplar(request):
         form = ExemplarForms()
     return render(request,'exemplar-form.html',{'form': form})
 
+
 @login_required(login_url='login')
 def exemplares(request):
     exemplars = Exemplar.objects.all()
     return render(request,'exemplares.html',{'exemplares': exemplars})
 
+
 @login_required(login_url='login')
 def exemplar(request,idexemplar):
     example = Exemplar.objects.get(idexemplar=idexemplar)
     return render(request,'exemplar.html',{'exemplar': example})
+
 
 @login_required(login_url='login')
 def update_exemplar(request,idexemplar):
@@ -212,6 +222,7 @@ def update_exemplar(request,idexemplar):
         return redirect('exemplares')
     return render(request,'exemplar-form.html',{'form': form,'exemplar': example})
 
+
 @login_required(login_url='login')
 def delete_exemplar(request, idexemplar):
     example = Exemplar.objects.get(idexemplar=idexemplar)
@@ -219,6 +230,7 @@ def delete_exemplar(request, idexemplar):
         example.delete()
         return redirect('exemplares')
     return render(request,'exemplar-delete-confirm.html',{'exemplar':example})
+
 
 def  emprestar_exemplar(request, idexemplar):
     example = Exemplar.objects.get(idexemplar=idexemplar)
@@ -244,10 +256,12 @@ def cadastro_autor(request):
         form = AutorForms()
     return render(request,'autor-form.html', {'form': form})
 
+
 @login_required(login_url='login')
 def list_autores(request):
     autores = Autor.objects.order_by("nomeautor")
     return render(request,'list_autores.html',{'autores':autores})
+
 
 @login_required(login_url='login')
 def update_autor(request, idautor):
@@ -258,6 +272,7 @@ def update_autor(request, idautor):
         return redirect('list_autores')
     return render(request, 'autor-form.html',{'form':form,'autor':autor})
 
+
 @login_required(login_url='login')
 def delete_autor(request,idautor):
     autor = Autor.objects.get(idautor=idautor)
@@ -265,6 +280,7 @@ def delete_autor(request,idautor):
         autor.delete()
         return redirect('list_autores')
     return render(request, 'autor-delete-confirm.html',{'autor':autor})
+
 
 @login_required(login_url='login')
 def autor(request,idautor):
@@ -292,10 +308,12 @@ def cadastro_emprestimo(request):
         form = EmprestimoForms()
     return render(request,'emprestimo-form.html', {'form': form})
 
+
 @login_required(login_url='login')
 def list_emprestimos(request):
     emprestimos = Emprestimo.objects.filter(devolucao=False)
     return render(request,'list_emprestimos.html',{'emprestimos':emprestimos})
+
 
 @login_required(login_url='login')
 def update_emprestimo(request, idemprestimo):
@@ -305,6 +323,7 @@ def update_emprestimo(request, idemprestimo):
         form.save()
         return redirect('list_emprestimos')
     return render(request, 'emprestimo-form.html',{'form':form,'emprestimo':emprestimo})
+
 
 @login_required(login_url='login')
 def delete_emprestimo(request,idemprestimo):
@@ -317,10 +336,12 @@ def delete_emprestimo(request,idemprestimo):
         return redirect('list_emprestimos')
     return render(request, 'emprestimo-delete-confirm.html',{'emprestimo':emprestimo})
 
+
 @login_required(login_url='login')
 def emprestimo(request,idemprestimo):
     emprestimo = Emprestimo.objects.get(idemprestimo=idemprestimo)
     return render(request,'emprestimo.html',{'emprestimo': emprestimo})
+
 
 @login_required(login_url='login')
 def devolver(request, idemprestimo):
@@ -336,6 +357,7 @@ def devolver(request, idemprestimo):
     client.save()
     return render(request, 'emprestimo.html',{'emprestimo':emprest})
 
+
 #####CLIENTES########
 
 @login_required(login_url='login')
@@ -348,10 +370,12 @@ def cadastro_cliente(request):
         form = ClienteForms()
     return render(request,'cliente-form.html', {'form': form})
 
+
 @login_required(login_url='login')
 def list_clientes(request):
     clientes = Cliente.objects.order_by("nome")
     return render(request,'list_clientes.html',{'clientes':clientes})
+
 
 @login_required(login_url='login')
 def update_cliente(request, idcliente):
@@ -362,6 +386,7 @@ def update_cliente(request, idcliente):
         return redirect('list_clientes')
     return render(request, 'cliente-form.html',{'form':form,'cliente':cliente})
 
+
 @login_required(login_url='login')
 def delete_cliente(request,idcliente):
     cliente = Cliente.objects.get(idcliente=idcliente)
@@ -370,15 +395,18 @@ def delete_cliente(request,idcliente):
         return redirect('list_clientes')
     return render(request, 'cliente-delete-confirm.html',{'cliente':cliente})
 
+
 @login_required(login_url='login')
 def cliente(request,idcliente):
     cliente = Cliente.objects.get(idcliente=idcliente)
     return render(request,'cliente.html',{'cliente': cliente})
 
+
 def historico(request,idcliente):
     cliente = Cliente.objects.get(idcliente=idcliente)
     emprestimos = Emprestimo.objects.filter(idcliente=idcliente)
     return render(request,'historico-cliente.html',{'cliente': cliente, 'emprestimos':emprestimos})
+
 
 #######EXTRAS#######
 @login_required(login_url='login')
@@ -390,6 +418,7 @@ def simple_upload(request):
         uploaded_file_url = fs.url(filename)
         return render(request, 'uploadfile.html',{'uploaded_file_url': uploaded_file_url})
     return render(request,'uploadfile.html')
+
 
 @login_required(login_url='login')
 def model_form_upload(request):
