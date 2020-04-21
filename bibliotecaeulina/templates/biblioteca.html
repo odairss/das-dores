@@ -20,4 +20,9 @@
   <!--  <article class="col-md-12 home-menu"><a href="{% url 'cadastro_emprestimo' %}" target="_self">Cadastrar Empréstimo</a><hr></article> -->
     <article class="col-md-12 home-menu"><a href="{% url 'list_emprestimos' %}" target="_self">Empréstimos</a><hr></article>
 </section>
+<section>
+    <mark>Cole&ccedil;&otilde;es: {{colecoes}}</mark><br/>
+    <mark>Títulos: {{livros}}</mark><br/>
+    <mark>Livros: {{exemplares}}</mark>
+</section>
 {% endblock %}

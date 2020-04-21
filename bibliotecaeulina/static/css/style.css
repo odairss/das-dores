@@ -46,6 +46,11 @@ hr{
     border-radius: 8px;
     margin-bottom: 50px;
 }
+mark{
+    background-color: yellow;
+    font-size: 0.8em;
+    color: #4F4F4F;
+}
 #container-login{
     position: relative;
     z-index: 3;
@@ -103,11 +108,11 @@ hr{
     margin-top: 10px;
 }
 #status-exemplar-on{
-    font-size: 1.5em;
+    font-size: 0.9em;
     color: #00FF08;
 }
 #status-exemplar-off{
-    font-size: 1.5em;
+    font-size: 0.9em;
     color: #ff0000;
 }
 footer{

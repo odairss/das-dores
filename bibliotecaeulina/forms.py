@@ -24,10 +24,11 @@ class LivroForms(forms.ModelForm):
                   'isbn', 'serie', 'tema', 'faixaetaria', 'ilustracao', 'situacao']
 
 
-class ExemplarForms(forms.ModelForm):
+class ExemplarForms(forms.Form, forms.ModelForm):
+    quantidade = forms.IntegerField(min_value=1, max_value=30)
     class Meta:
         model = Exemplar
-        fields = ['idlivro','situacao','status']
+        fields = ['idlivro','situacao','status', 'quantidade']
 
 
 class UsuarioForms(forms.ModelForm):

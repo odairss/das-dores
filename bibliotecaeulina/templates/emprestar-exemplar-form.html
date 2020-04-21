@@ -5,7 +5,7 @@
 {%block conteudo %}
 <div class="row container-content">
     <div class="col-12">
-        <p>Emprestar exemplar</p>
+        <p>Emprestar exemplar<br/>Usuário: {{user}}</p>
     </div>
     <div class="col-12">
         <form action="{% url 'cadastro_emprestimo' %}" method="POST">
@@ -24,7 +24,7 @@
             {% endif %}
             <label for="label_datadevolucao">Data da Devolução: </label>
             <input type='text' name="datadevolucao" value='{{datadevolver}}'  required="True"/>
-            <input type="hidden" value="1" name="idusuario" required="True"/>
+            <input type="hidden" value="{{user.id}}" name="idusuario" required="True"/>
             <button type="submit" >Emprestar</button>
         </form>
     </div>

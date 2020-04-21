@@ -31,13 +31,18 @@ def login_user(request):
         form = LoginForm()
         return render(request,'login.html',{'form':form})
 
+
 def logout_user(request):
     logout(request)
     return redirect('login')
 
+
 @login_required(login_url='login')
 def home(request):
-    return render(request,'biblioteca.html')
+    colecoes = Colecao.objects.count()
+    livros = Livro.objects.count()
+    exemplares = Exemplar.objects.count()
+    return render(request,'biblioteca.html', {'colecoes':colecoes, 'livros': livros, 'exemplares':exemplares})
 
 
 #####USUARIOS########
@@ -151,9 +156,10 @@ def cadastro_livro(request):
 def acervo(request):
     if request.method == 'POST':
         book = request.POST.get('book')
-        booksfound = Livro.objects.filter(titulo__contains=book).order_by('titulo')
+        found_books = Livro.objects.filter(titulo__contains=book).order_by('titulo')
+        exemplares = acervo_exemplares(found_books)
         formBook = SearchBookForm()
-        return render(request, 'acervo.html',{'acervo':booksfound,'form':formBook})
+        return render(request, 'acervo.html', {'acervo':exemplares, 'form':formBook})
     else:
         formBook = SearchBookForm()
         return render(request, 'acervo.html',{'form':formBook})
@@ -188,13 +194,17 @@ def delete_livro(request, idlivro):
         return redirect('ver_acervo')
     return render(request,'livro-delete-confirm.html',{'livro':livro})
 
+
 #######EXEMPLARES#########
 
 @login_required(login_url='login')
 def cadastro_exemplar(request):
     form = ExemplarForms(request.POST)
     if form.is_valid():
-        form.save()
+        quant = int(request.POST['quantidade'])
+        for num in range(quant):
+            form = ExemplarForms(request.POST)
+            form.save()
         return redirect('exemplares')
     else:
         form = ExemplarForms()
@@ -205,6 +215,15 @@ def cadastro_exemplar(request):
 def exemplares(request):
     exemplars = Exemplar.objects.all()
     return render(request,'exemplares.html',{'exemplares': exemplars})
+
+
+def acervo_exemplares(livros):
+    booksfound = []
+    for livro in livros:
+        exemplares = Exemplar.objects.filter(idlivro=livro.idlivro)
+        for ex in exemplares:
+            booksfound.append(ex)
+    return booksfound
 
 
 @login_required(login_url='login')

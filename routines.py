@@ -17,13 +17,13 @@ def set_multas():
             if client.save():
                 print('salvou')
             else:
-                print('não salvou')
+                print('nao salvou')
             if emprestimo.save():
                 print('salvou')
             else:
-                print('não salvou')
+                print('nao salvou')
         else:
-            print('Cliente ', client, ' ainda não realizou emprestimos.')
+            print('Cliente ', client, ' ainda nao realizou emprestimos.')
 
 
 
@@ -43,7 +43,7 @@ def gerencia_multas():
                 print('Multa atual de ',client, ' : ', client.multa)
                 client.save()
         else:
-            print('Cliente: ', client, ' não tem livros devolvidos ')
+            print('Cliente: ', client, ' nao tem livros devolvidos ')
 
 
 gerencia_multas()

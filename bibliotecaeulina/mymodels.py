@@ -74,7 +74,7 @@ class Livro(models.Model):
 class Exemplar(models.Model):
     idexemplar = models.AutoField(primary_key=True, verbose_name='Código')
 #    idexemplar = models.IntegerField('Exemplar',auto_created=True,primary_key=True)
-    idlivro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+    idlivro = models.ForeignKey(Livro, on_delete=models.CASCADE, verbose_name='Livro')
     SITUATION = ((u'Excelente',u'Excelente'),(u'Ótimo',u'Ótimo'),(u'Bom',u'Bom'),(u'Ruim',u'Ruim'),(u'Péssimo',u'Péssimo'))
     situacao = models.CharField('Situação',max_length=20,choices=SITUATION)
     DISPONIVEL = ((True,u'Disponível'),(False,u'Indisponível'))
