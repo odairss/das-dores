@@ -1,25 +1,14 @@
 #!/usr/bin/env python3.7
-
-import django
-import os
-import sys
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'eulina.settings')
-path = '/home/dasdores/das-dores'
-if path not in sys.path:
-    sys.path.append(path)
-
-django.setup()
-
 from datetime import datetime, timedelta, tzinfo, timezone
-from bibliotecaeulina.mymodels import Cliente, Emprestimo
+from . import mymodels
+
 
 def set_multas():
-    clientes = Cliente.objects.filter()
+    clientes = mymodels.Cliente.objects.filter()
     for client in clientes:
-        quant = Emprestimo.objects.filter(idcliente=client.idcliente).count()
+        quant = mymodels.Emprestimo.objects.filter(idcliente=client.idcliente).count()
         if quant > 0:
-            emprestimo = Emprestimo.objects.filter(idcliente=client.idcliente).order_by('-datadevolucao')[0]
+            emprestimo = mymodels.Emprestimo.objects.filter(idcliente=client.idcliente).order_by('-datadevolucao')[0]
             print('Emprestimo: ',emprestimo.idemprestimo)
             hoje = datetime.now(timezone.utc) - timedelta(hours=3)
             if (emprestimo.datadevolvido is None) and emprestimo.datadevolucao < hoje:
@@ -39,13 +28,12 @@ def set_multas():
             print('Cliente ', client, ' ainda nao realizou emprestimos.')
 
 
-
 def gerencia_multas():
-    clientes = Cliente.objects.filter()
+    clientes = mymodels.Cliente.objects.filter()
     for client in clientes:
-        quant = Emprestimo.objects.filter(idcliente=client.idcliente,devolucao=True).count()
+        quant = mymodels.Emprestimo.objects.filter(idcliente=client.idcliente,devolucao=True).count()
         if quant > 0:
-            emprestimo = Emprestimo.objects.filter(idcliente=client.idcliente, devolucao=True).order_by('-datadevolvido')[0]
+            emprestimo = mymodels.Emprestimo.objects.filter(idcliente=client.idcliente, devolucao=True).order_by('-datadevolvido')[0]
             print('Cliente: ',client, ', Dias atrasados: ', emprestimo.diasatrasados,'; ')
             if client.multa > 0:
                 hoje = datetime.now(timezone.utc) - timedelta(hours=3)
@@ -59,5 +47,4 @@ def gerencia_multas():
             print('Cliente: ', client, ' nao tem livros devolvidos ')
 
 
-gerencia_multas()
 set_multas()

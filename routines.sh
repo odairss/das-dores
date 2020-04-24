@@ -1,3 +1,8 @@
-python3
+chmod +x /home/dasdores/das-dores/routines.py
 
-from routines import *
+cd /home/dasdores/
+
+. .virtualenvs/myenv/bin/activate
+
+python /home/dasdores/das-dores/routines.py
+

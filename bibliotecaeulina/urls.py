@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views, routines
 
 
 urlpatterns = [
@@ -50,6 +50,9 @@ urlpatterns = [
     path('delete_emprestimo/<int:idemprestimo>/',views.delete_emprestimo, name='delete_emprestimo'),
     path('cadastro_emprestimo', views.cadastro_emprestimo, name='cadastro_emprestimo'),
     path('emprestimo/devolver/<int:idemprestimo>/', views.devolver, name='devolver'),
+
+    path('set_multas', routines.set_multas, name='multas'),
+    path('gerencia_multas', routines.gerencia_multas, name='gerencia_multas'),
 
     path('login',views.login_user,name="login"),
 #    path('submit',views.submit,name="submit"),
